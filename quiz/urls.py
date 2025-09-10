@@ -1,0 +1,13 @@
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import QuizViewSet, SubmitQuizView, TextSummarizationView,GenerateQuizFromTextView
+
+router = DefaultRouter()
+router.register(r'quizzes', QuizViewSet, basename='quiz')
+
+urlpatterns = [
+    path('', include(router.urls)),
+    path('quizzes/<int:quiz_id>/submit/', SubmitQuizView.as_view(), name='submit-quiz'),
+    path('summarize/', TextSummarizationView.as_view(), name='summarize-text'),
+    path('generate-quiz/', GenerateQuizFromTextView.as_view(), name='generate-quiz'),
+]
