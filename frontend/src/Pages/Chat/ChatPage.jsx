@@ -12,7 +12,7 @@ const ChatPage = () => (
           <button className="bg-indigo-100 text-indigo-700 rounded-lg px-5 py-2 text-base font-semibold shadow hover:bg-indigo-200 transition border border-indigo-200">Personalities & Skillsets</button>
           <button className="bg-indigo-100 text-indigo-700 rounded-lg px-5 py-2 text-base font-semibold shadow hover:bg-indigo-200 transition border border-indigo-200">Scenarios</button>
         </div>
-        <h2 className="text-3xl font-extrabold text-indigo-900 my-2">Hi, I'm Spark.E</h2>
+        <h2 className="text-3xl font-extrabold text-indigo-900 my-2">Hi, I'm StudyBuddy</h2>
         <div className="text-gray-500 text-lg mb-6 text-center max-w-xl">Ask me anything about learning, or try one of these examples:</div>
         <div className="flex gap-4 flex-wrap justify-center mb-2 w-full">
           <button className="bg-indigo-100 text-indigo-700 rounded-lg px-5 py-2 font-semibold shadow hover:bg-indigo-200 transition border border-indigo-200">Explain Concepts</button>
