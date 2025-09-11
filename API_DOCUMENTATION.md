@@ -226,6 +226,43 @@ For WebSocket connections, pass the token as a query parameter: `?token=<your_ac
 - **Body:** User data to update
 - **Response:** Updated user profile
 
+### 6. AI Study Tools
+
+#### Generate Study Notes
+- **POST** `/api/generate-notes/`
+- **Body:**
+  ```json
+  {
+    "text": "Your study material text here."
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "notes": "- Bullet point 1\n- Bullet point 2\n..."
+  }
+  ```
+- **Description:** Uses Gemini API to extract concise, well-structured study notes from the provided text.
+
+#### Generate Keyword-based Flashcards
+- **POST** `/api/generate-flashcards/`
+- **Body:**
+  ```json
+  {
+    "text": "Your study material text here."
+  }
+  ```
+- **Response:**
+  ```json
+  {
+    "flashcards": [
+      { "term": "Keyword1", "definition": "Definition1" },
+      { "term": "Keyword2", "definition": "Definition2" }
+    ]
+  }
+  ```
+- **Description:** Uses Gemini API to generate flashcards with terms and definitions based on keywords from the provided text.
+
 ## Error Responses
 
 ### 400 Bad Request

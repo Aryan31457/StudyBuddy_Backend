@@ -158,3 +158,47 @@ class GenerateQuizFromTextView(APIView):
                     "answer": answer
                 })
         return quiz_questions
+    
+class NotesGenerationView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        text = request.data.get('text', '')
+
+        if not text:
+            return Response({"error": "Text is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            prompt = f"""
+            Extract concise, well-structured study notes from the following text. Format the notes in bullet points and return as JSON with a 'notes' key.
+
+            Text:
+            {text}
+            """
+            model = genai.GenerativeModel("gemini-2.5-flash")
+            response = model.generate_content(prompt)
+            return Response({"notes": response.text}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class FlashcardGenerationView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        text = request.data.get('text', '')
+
+        if not text:
+            return Response({"error": "Text is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            prompt = f"""
+            Generate keyword-based flashcards from the following text. Each flashcard should have a 'term' and a 'definition'. Keep flashcard abstract and short .Return as a JSON array under the key 'flashcards'.
+
+            Text:
+            {text}
+            """
+            model = genai.GenerativeModel("gemini-2.5-flash")
+            response = model.generate_content(prompt)
+            return Response({"flashcards": response.text}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
