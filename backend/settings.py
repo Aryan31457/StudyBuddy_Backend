@@ -101,8 +101,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'studybuddy',  # You can change this to your preferred db name
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3', # You can change this to your preferred db name
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
             'host': 'mongodb+srv://aryan31457_db_user:1234@cluster0.jmzniyq.mongodb.net/studybuddy?retryWrites=true&w=majority',
